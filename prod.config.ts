@@ -13,7 +13,7 @@ module.exports = defineConfig({
     openMode: 0,
   },
   screenshotOnRunFailure: true,
-  screenshotsFolder: 'cypress/stage/screenshots',
+  screenshotsFolder: 'cypress/prod/screenshots',
   scrollBehavior: 'top',
   taskTimeout: 60000,
   testIsolation: true,
@@ -21,7 +21,7 @@ module.exports = defineConfig({
   userAgent: null,
   video: false,
   videoCompression: false,
-  videosFolder: 'cypress/stage/videos',
+  videosFolder: 'cypress/prod/videos',
   viewportHeight: 660,
   viewportWidth: 1000,
   e2e: {
