@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "cy:open:stage": "npx cypress open --config-file stage.config.ts",
+    "cy:open:prod": "npx cypress open --config-file prod.config.ts",
+    "cy:run:stage": "npx cypress run --browser chrome --headed --config-file stage.config.ts",
+    "cy:run:prod": "npx cypress run --browser chrome --headed --config-file prod.config.ts"
+  },
   "devDependencies": {
-    "cypress": "^13.6.4"
+    "cypress": "^13.6.4",
+    "typescript": "^5.3.3"
   }
 }
