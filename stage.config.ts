@@ -16,7 +16,6 @@ module.exports = defineConfig({
   screenshotsFolder: 'cypress/stage/screenshots',
   scrollBehavior: 'top',
   taskTimeout: 60000,
-  testIsolation: true,
   trashAssetsBeforeRuns: true,
   userAgent: null,
   video: false,
@@ -37,6 +36,7 @@ module.exports = defineConfig({
         }
       });
     },
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: 'https://bing.com',
     env: {
       envName: 'STAGE'
