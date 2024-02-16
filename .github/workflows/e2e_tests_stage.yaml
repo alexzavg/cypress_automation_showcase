@@ -10,8 +10,8 @@ on:
       - main
 
 # variables https://github.com/alexzavg/cypress_automation_showcase/settings/variables/actions
-# env:
-#   NODE_VERSION:    20.x
+env:
+  NODE_VERSION:    20.x
 
 jobs:
   e2e_tests:
@@ -24,8 +24,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Cypress run
-      uses: cypress-io/github-action@v6
+    - name: 📗 Use node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: 🔽 Install dependencies
+      run: |
+        npm install
+        npm install -g ts-node
+        npm install cypress --save-dev
 
     - name: ⚙️ Run E2E tests
       run: npm run cy:record:stage
