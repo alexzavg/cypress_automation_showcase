@@ -22,8 +22,8 @@ module.exports = defineConfig({
   video: false,
   videoCompression: false,
   videosFolder: 'cypress/prod/videos',
-  viewportHeight: 660,
-  viewportWidth: 1000,
+  viewportHeight: 900,
+  viewportWidth: 1440,
   e2e: {
     setupNodeEvents(on, config) {
       on('before:browser:launch', (browser, launchOptions) => {
@@ -37,6 +37,9 @@ module.exports = defineConfig({
         }
       });
     },
-    baseUrl: 'https://google.com'
+    baseUrl: 'https://google.com',
+    env: {
+      envName: 'PROD'
+    },
   },
 });

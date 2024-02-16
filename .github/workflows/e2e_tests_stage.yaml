@@ -1,0 +1,30 @@
+name: e2e_tests_stage
+run-name: ⚙️ E2E tests STAGE
+
+# will run on weekdays at 08:00 (Kiev TZ) / 03:00 EST
+on:
+  # schedule:
+  #   - cron: '0 5 * * 1-5'
+  push:
+    branches:
+      - main
+
+# variables https://github.com/alexzavg/cypress_automation_showcase/settings/variables/actions
+# env:
+#   NODE_VERSION:    20.x
+
+jobs:
+  e2e_tests:
+    name: ⚙️ E2E tests STAGE
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🔎 List all environment variables
+      run: env | sort
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v6
+      with:
+        command: npm run cy:record:stage
