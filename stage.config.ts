@@ -37,7 +37,7 @@ module.exports = defineConfig({
       });
     },
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    baseUrl: 'https://bing.com',
+    baseUrl: 'https://automationexercise.com',
     env: {
       envName: 'STAGE'
     },
