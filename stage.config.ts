@@ -36,7 +36,7 @@ module.exports = defineConfig({
         }
       });
     },
-    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: 'https://automationexercise.com',
     env: {
       envName: 'STAGE'

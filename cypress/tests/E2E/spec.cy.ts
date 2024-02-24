@@ -1,6 +1,6 @@
-import { DataGenerator } from "../support/DataGenerator";
-import { HomePage } from "../pages/homePage";
-import { testData } from "../data/testData";
+import { DataGenerator } from "../../support/DataGenerator";
+import { HomePage } from "../../pages/homePage";
+import { testData } from "../../data/testData";
 
 const data = new DataGenerator();
 const homePage = new HomePage();
