@@ -2,9 +2,13 @@ export class DataGenerator {
 
   // The string returned is in the format of "YYYYMMDDHHMMSS", e.g. "20190212152415"
   public async currentDateString(){
-    var date = new Date();    
-    var testDate = date.getFullYear() + (date.getMonth() + 1) + date.getDate() + (date.getHours() + 3) + date.getMinutes() + date.getSeconds();
-    return testDate;
+    var now = new Date();    
+    return `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
+  };
+
+  // This will generate a float between {min} and {max}, e.g. 100.50
+  public async getRandomFloat(min: number, max: number) {
+    return parseFloat((Math.random() * (max - min) + min).toFixed(2));
   };
 
   // The string returned is the email address in the format of "autotest_YYYYMMDDHHMMSS@test.com", e.g. "autotest_20190212152415@test.com

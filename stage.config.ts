@@ -39,7 +39,8 @@ module.exports = defineConfig({
     specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
     baseUrl: 'https://automationexercise.com',
     env: {
-      envName: 'STAGE'
+      envName: 'STAGE',
+      graphQL_baseUrl: 'https://graphql-teas-endpoint.netlify.app/'
     },
   },
 });
