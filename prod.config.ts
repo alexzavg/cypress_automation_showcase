@@ -40,7 +40,8 @@ module.exports = defineConfig({
     baseUrl: 'https://automationexercise.com',
     env: {
       envName: 'PROD',
-      graphQL_baseUrl: 'https://graphql-teas-endpoint.netlify.app/'
+      graphQL_baseUrl: 'https://graphql-teas-endpoint.netlify.app/',
+      training_baseUrl: 'https://practice.expandtesting.com'
     },
   },
 });
