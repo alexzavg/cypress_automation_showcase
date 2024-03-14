@@ -1,6 +1,6 @@
-import { TablePage } from "../../pages/tablePage";
+import { PracticePage } from "../../pages/practicePage";
 
-const tablePage = new TablePage();
+const practicePage = new PracticePage();
 const url = Cypress.env('training_baseUrl');
 const browsers = {
   IE: 'Internet Explorer', 
@@ -14,21 +14,21 @@ const stats = {
   network: 'Network'
 };
 
-describe('Automation Practice', () => {
+describe('Dynamic Tables', () => {
 
   beforeEach(()=>{
     cy.visit(`${url}/dynamic-table`);
   })
 
   it('Dynamic table stats for a single browser', () => {
-    tablePage.getBrowserStats(browsers.chrome, stats.memory).then((statValue) => {
+    practicePage.getBrowserStats(browsers.chrome, stats.memory).then((statValue) => {
       cy.log(statValue);
     });
   });
 
   it('Dynamic table stats for multiple browsers', () => {
     const statValuesPromises = Object.values(browsers).map(browserName => {
-      return tablePage.getBrowserStats(browserName, stats.CPU);
+      return practicePage.getBrowserStats(browserName, stats.CPU);
     });
     
     return Promise.all(statValuesPromises).then((statValues: string[]) => {

@@ -6,6 +6,15 @@ export class DataGenerator {
     return `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, '0')}${now.getDate().toString().padStart(2, '0')}${now.getHours().toString().padStart(2, '0')}${now.getMinutes().toString().padStart(2, '0')}${now.getSeconds().toString().padStart(2, '0')}`;
   };
 
+  // Returns the current date in the YYYY-MM-DD format.
+  public async getDateForInput() {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (`0${date.getMonth() + 1}`).slice(-2); // Month is 0-indexed
+    const day = (`0${date.getDate()}`).slice(-2);
+    return `${year}-${month}-${day}`;
+  };
+
   // This will generate a float between {min} and {max}, e.g. 100.50
   public async getRandomFloat(min: number, max: number) {
     return parseFloat((Math.random() * (max - min) + min).toFixed(2));
@@ -36,7 +45,7 @@ export class DataGenerator {
     return str;
   };
 
-  // Returns random number with specific length, e.g. if length = 6, then output will be "123456"
+  // Returns random number with specific length as a string, e.g. if length = 6, then output will be "123456"
   public async randomNumber(length: number) {
     var str = '';
     var i;
@@ -44,8 +53,7 @@ export class DataGenerator {
     for (i = 0; i < length; i++) {
         str += numbers.charAt(Math.floor(Math.random() * numbers.length));
     }
-    let num = Number(str);
-    return num;
+    return str;
   };
 
   // Returns random special character with specific length, e.g. if length = 6, then output will be "!@#$%^"
