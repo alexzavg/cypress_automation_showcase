@@ -37,7 +37,7 @@ jobs:
         with:
           name: build
           if-no-files-found: error
-          path: ./home/runner/work/cypress_automation_showcase/cypress_automation_showcase
+          path: /home/runner/work/cypress_automation_showcase
   
   cypress-run:
     runs-on: ubuntu-latest
