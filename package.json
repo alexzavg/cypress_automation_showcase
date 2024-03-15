@@ -10,7 +10,7 @@
     "cy:record:prod": "npx cypress run --browser chrome --headed --record --key e7992666-3d98-4396-bbd0-63544ff3a434 --config-file prod.config.ts"
   },
   "devDependencies": {
-    "cypress": "^13.6.6",
+    "cypress": "^13.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
