@@ -7,7 +7,7 @@ on:
   #   - cron: '0 5 * * 1-5'
   push:
     branches:
-      - main
+      - test
 
 # variables https://github.com/alexzavg/cypress_automation_showcase/settings/variables/actions
 env:
