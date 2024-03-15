@@ -31,6 +31,7 @@ jobs:
           npm install -g ts-node
           npm install cypress --save-dev
           pwd
+          ls -la
 
       - name: Save build folder
         uses: actions/upload-artifact@v4
@@ -54,6 +55,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
+          path: /home/runner/work/cypress_automation_showcase/cypress_automation_showcase
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
