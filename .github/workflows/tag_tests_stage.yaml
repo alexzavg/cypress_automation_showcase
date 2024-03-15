@@ -1,5 +1,5 @@
-name: all_tests_stage
-run-name: ⚙️ ALL tests STAGE
+name: tag_tests_stage
+run-name: ⚙️ Tag tests STAGE
 
 # will run on weekdays at 08:00 (Kiev TZ) / 03:00 EST
 on:
@@ -7,15 +7,15 @@ on:
   #   - cron: '0 5 * * 1-5'
   push:
     branches:
-      - test
+      - main
 
 # variables https://github.com/alexzavg/cypress_automation_showcase/settings/variables/actions
 env:
   NODE_VERSION: 20.x
 
 jobs:
-  run_tests:
-    name: ⚙️ ALL tests STAGE
+  e2e_tests:
+    name: ⚙️ Tag tests STAGE
     runs-on: ubuntu-latest
     steps:
     - name: 🔎 List all environment variables
@@ -36,4 +36,4 @@ jobs:
         npm install cypress --save-dev
 
     - name: ⚙️ Run tests
-      run: npm run cy:record:stage
+      run: npm run cy:record:stage:api

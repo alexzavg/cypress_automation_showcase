@@ -1,5 +1,5 @@
-name: e2e_tests_stage_parallel
-run-name: ⚙️ E2E tests STAGE
+name: all_tests_stage_parallel
+run-name: ⚙️ ALL tests STAGE parallel
 
 # will run on weekdays at 08:00 (Kiev TZ) / 03:00 EST
 on:
@@ -14,12 +14,12 @@ env:
   NODE_VERSION: 20.x
 
 jobs:  
-  cypress-run:
+  run_tests:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1, 2, 3]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,10 +34,8 @@ jobs:
           npm install
           npm install -g ts-node
           npm install cypress --save-dev
-          pwd
-          ls -la
 
-      - name: Cypress run
+      - name: Run tests
         uses: cypress-io/github-action@v6
         with:
           command: npm run cy:record:stage:parallel
