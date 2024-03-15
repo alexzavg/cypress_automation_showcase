@@ -32,13 +32,6 @@ jobs:
           npm install cypress --save-dev
           pwd
           ls -la
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          if-no-files-found: error
-          path: /home/runner/work/cypress_automation_showcase/cypress_automation_showcase
   
   cypress-run:
     runs-on: ubuntu-latest
@@ -50,12 +43,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download the build folder
-        uses: actions/download-artifact@v4
-        with:
-          name: build
-          path: /home/runner/work/cypress_automation_showcase/cypress_automation_showcase
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
