@@ -6,6 +6,7 @@
     "cy:run:stage": "npx cypress run --browser chrome --headed --config-file stage.config.ts",
     "cy:run:prod": "npx cypress run --browser chrome --headed --config-file prod.config.ts",
     "cy:record:stage": "npx cypress run --browser chrome --headed --record --key e7992666-3d98-4396-bbd0-63544ff3a434 --config-file stage.config.ts",
+    "cy:record:stage:api": "npx cypress run --browser chrome --headed --record --key e7992666-3d98-4396-bbd0-63544ff3a434 --env grepTags=api --config-file stage.config.ts",
     "cy:record:stage:parallel": "npx cypress run --browser chrome --headed --record --key e7992666-3d98-4396-bbd0-63544ff3a434 --parallel --config-file stage.config.ts",
     "cy:record:prod": "npx cypress run --browser chrome --headed --record --key e7992666-3d98-4396-bbd0-63544ff3a434 --config-file prod.config.ts"
   },
