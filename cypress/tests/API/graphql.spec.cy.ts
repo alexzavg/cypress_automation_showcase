@@ -7,7 +7,7 @@ const graphql = new GraphqlPage();
 const teaName = await data.currentDateString();
 const teaPrice = await data.getRandomFloat(1, 99);
 
-describe('QraphQL API Practice', { tags: ['api'] }, () => {
+describe('QraphQL API Practice', { tags: 'api' }, () => {
 
   it('Add new tea', () => {
     graphql.addTea(teaName, teaPrice);

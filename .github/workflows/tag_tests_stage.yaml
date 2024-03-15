@@ -36,4 +36,4 @@ jobs:
         npm install cypress --save-dev
 
     - name: ⚙️ Run tests
-      run: npm run cy:record:stage:api
+      run: npm run cy:record:stage:tags
