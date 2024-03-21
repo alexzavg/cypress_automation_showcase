@@ -3,11 +3,11 @@ run-name: ⚙️ ALL tests STAGE parallel
 
 # will run on weekdays at 08:00 (Kiev TZ) / 03:00 EST
 on:
-  schedule:
-    - cron: '0 5 * * 1-5'
-  # push:
-  #   branches:
-  #     - test
+  # schedule:
+  #   - cron: '0 5 * * 1-5'
+  push:
+    branches:
+      - test
 
 # variables https://github.com/alexzavg/cypress_automation_showcase/settings/variables/actions
 env:
