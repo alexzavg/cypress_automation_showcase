@@ -5,6 +5,8 @@ export class PracticePage {
     textInput: () => cy.get('#input-text'),
     passwordInput: () => cy.get('#input-password'),
     dateInput: () => cy.get('#input-date'),
+    addElementBtn: () => cy.get('[onclick="addElement()"]'),
+    deleteElementBtn: () => cy.get('[onclick="deleteElement()"]')
   }
 
   fillNumberInput(value: string) {
@@ -30,6 +32,18 @@ export class PracticePage {
 
   fillDateInput(value: string) {
     this.elements.dateInput().type(value).should('have.value', value);
+  }
+
+  addElement() {
+    this.elements.addElementBtn().click();
+  }
+
+  checkElementQuantity(quantity: number) {
+    this.elements.deleteElementBtn().should('have.length', quantity);
+  }
+
+  deleteElement() {
+    this.elements.deleteElementBtn().first().click();
   }
 
   getBrowserStats(browserName: string, statName: string) {
