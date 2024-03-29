@@ -1,8 +1,6 @@
 import { PracticePage } from "../../pages/practicePage";
-import { DataGenerator } from "../../support/DataGenerator";
 
 const practicePage = new PracticePage();
-const data = new DataGenerator();
 const url = Cypress.env('training_baseUrl');
 
 describe('Add & Remove Elements', () => {
@@ -20,7 +18,7 @@ describe('Add & Remove Elements', () => {
 
     practicePage.deleteElement()
     practicePage.checkElementQuantity(1);
-    
+
     practicePage.deleteElement();
     practicePage.checkElementQuantity(0);
   });

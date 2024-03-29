@@ -6,7 +6,8 @@ export class PracticePage {
     passwordInput: () => cy.get('#input-password'),
     dateInput: () => cy.get('#input-date'),
     addElementBtn: () => cy.get('[onclick="addElement()"]'),
-    deleteElementBtn: () => cy.get('[onclick="deleteElement()"]')
+    deleteElementBtn: () => cy.get('[onclick="deleteElement()"]'),
+    showNotificationBtn: () => cy.get('[href="/notification-message"]'),
   }
 
   fillNumberInput(value: string) {
@@ -44,6 +45,19 @@ export class PracticePage {
 
   deleteElement() {
     this.elements.deleteElementBtn().first().click();
+  }
+
+  checkNotificationText() {
+    this.elements.showNotificationBtn().click();
+
+    cy.get('body').then((body) => {
+      if (body.find('#flash:contains("Action unsuccessful, please try again")').length > 0) {
+        cy.log('Action unsuccessful, retrying...');
+        this.checkNotificationText();
+      } else if (body.find('#flash:contains("Action successful")').length > 0) {
+        cy.log('Action successful, yeah!');
+      }
+    });
   }
 
   getBrowserStats(browserName: string, statName: string) {
