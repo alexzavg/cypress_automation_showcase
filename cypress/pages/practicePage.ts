@@ -66,4 +66,27 @@ export class PracticePage {
     });
   }
 
+  checkRadioBtn(btnText: string) {
+    cy.contains('label', btnText).then((label) => {
+      const id = label.attr('for');
+      cy.get(`#${id}`).check().should('be.checked');
+    });
+  }
+
+  checkRadioBtnConditional(btnText: string) {
+    cy.contains('label', btnText).then((label) => {
+      // Get the associated radio button using prev(), assuming the input is right before the label
+      const radioButton = cy.wrap(label).prev('input[type="radio"]');
+  
+      radioButton.then((rb) => {
+        if (rb.is(':disabled')) {
+          cy.log(`Button with ${btnText} is disabled, not performing a click.`);
+        } else {
+          radioButton.check().should('be.checked');
+          cy.log(`${btnText} Button is selected.`);
+        }
+      });
+    });
+  }
+
 }
