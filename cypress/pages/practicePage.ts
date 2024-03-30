@@ -89,4 +89,27 @@ export class PracticePage {
     });
   }
 
+  dragAndDropSquares() {
+    const dataTransfer = new DataTransfer();
+
+    // Drag the 'A' header and drop it on the 'B' header
+    cy.get('#column-a header').trigger('dragstart', {
+      dataTransfer
+    });
+    cy.get('#column-b header').trigger('drop', {
+      dataTransfer
+    });
+
+    // Trigger the 'dragend' event on 'A' header
+    cy.get('#column-a header').trigger('dragend');
+
+    // Assertion to check the order has changed
+    cy.get('#dnd-columns .column').first().within(() => {
+      cy.get('header').should('contain', 'B');
+    });
+    cy.get('#dnd-columns .column').last().within(() => {
+      cy.get('header').should('contain', 'A');
+    });
+  }
+
 }
