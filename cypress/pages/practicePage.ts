@@ -99,8 +99,6 @@ export class PracticePage {
     cy.get('#column-b header').trigger('drop', {
       dataTransfer
     });
-
-    // Trigger the 'dragend' event on 'A' header
     cy.get('#column-a header').trigger('dragend');
 
     // Assertion to check the order has changed
@@ -110,6 +108,24 @@ export class PracticePage {
     cy.get('#dnd-columns .column').last().within(() => {
       cy.get('header').should('contain', 'A');
     });
+  }
+
+  dragAndDropCircles(color: string) {
+    const dataTransfer = new DataTransfer();
+
+    // Drag & drop circle with specific color
+    cy.get(`#source .${color}`).trigger('dragstart', {
+      dataTransfer
+    });
+    cy.get('#target').trigger('drop', {
+      dataTransfer
+    });
+    // Source element gets destroyed so no need to call 'dragend' event
+
+    // Assert color presence in the target area
+    cy.get(`#target .${color}`).should('be.visible');
+    // Assert color absence in the source area
+    cy.get(`#source .${color}`).should('not.exist');
   }
 
 }

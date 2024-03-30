@@ -9,7 +9,7 @@ describe('Drag & Drop', () => {
     cy.visit(`${url}/drag-and-drop`);
   });
 
-  it('execute drag & drop and assert element positions', () => {
+  it('execute drag & drop squares and assert element positions', () => {
     practicePage.dragAndDropSquares();
   });
 
