@@ -1,3 +1,5 @@
+import 'cypress-iframe';
+
 export class PracticePage {
 
   elements = {
@@ -130,6 +132,15 @@ export class PracticePage {
 
   clickShadowRootElement() {
     cy.get('#shadow-host').shadow().find('#my-btn').click();
+  }
+
+  emailSubIframe(email: string) {
+    const iframe = '#email-subscribe';
+
+    cy.frameLoaded(iframe);
+    cy.iframe(iframe).find('#email').type(email);
+    cy.iframe(iframe).find('#btn-subscribe').click();
+    cy.iframe(iframe).find('#success-message').should('have.text', 'You are now subscribed!');
   }
 
 }

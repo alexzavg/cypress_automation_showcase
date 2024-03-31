@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "@cypress/grep": "^4.0.1",
-    "cypress": "^13.7.0",
+    "cypress": "^13.7.1",
+    "cypress-iframe": "^1.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
