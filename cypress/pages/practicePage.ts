@@ -128,4 +128,8 @@ export class PracticePage {
     cy.get(`#source .${color}`).should('not.exist');
   }
 
+  clickShadowRootElement() {
+    cy.get('#shadow-host').shadow().find('#my-btn').click();
+  }
+
 }
