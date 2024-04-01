@@ -134,6 +134,14 @@ export class PracticePage {
     cy.get('#shadow-host').shadow().find('#my-btn').click();
   }
 
+  checkNestedShadowRootElement() {
+    cy.get('[apptitle="BOOKS"]').shadow()
+      .find('book-home').shadow()
+      .find('book-image').shadow()
+      .find('[src="images/books-bg.jpg"]')
+      .should('be.visible');
+  }
+
   emailSubIframe(email: string) {
     const iframe = '#email-subscribe';
 
