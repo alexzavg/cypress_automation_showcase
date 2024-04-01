@@ -166,4 +166,41 @@ export class PracticePage {
     });
   }
 
+  acceptAlert() {
+    cy.on('window:alert', (text) => {
+      expect(text).to.equal('I am a Js Alert');
+    });
+    cy.get('#js-alert').click();
+    cy.get('#dialog-response').should('have.text', 'OK');
+  }
+
+  jsConfirm(confirm: boolean) {
+    cy.on('window:confirm', (text) => {
+      expect(text).to.equal('I am a Js Confirm');
+      return confirm;
+    });
+    cy.get('#js-confirm').click();
+    if (confirm === true) {
+      cy.get('#dialog-response').should('have.text', 'Ok');
+    } else {
+      cy.get('#dialog-response').should('have.text', 'Cancel');
+    }
+  }
+
+  jsPrompt(promptText: string, submit: boolean = true) {
+    cy.window().then((win) => {
+      const stub = cy.stub(win, 'prompt');
+      stub.returns(submit ? promptText : null);
+      cy.get('#js-prompt').click();
+  
+      // Now check if we submitted or canceled to assert the expected outcome
+      if (submit) {
+        cy.get('#dialog-response').should('have.text', promptText);
+      } else {
+        // In case of cancel, we assume an empty string is displayed
+        cy.get('#dialog-response').should('have.text', '');
+      }
+    });
+  }
+
 }
