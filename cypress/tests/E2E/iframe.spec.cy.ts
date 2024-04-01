@@ -8,12 +8,14 @@ const email = await data.randomEmail();
 
 describe('Iframe', () => {
 
-  beforeEach(()=>{
+  it(`Subscribe to mail newsletter located within an iframe`, () => {
     cy.visit(`${url}/iframe`);
+    practicePage.emailSubIframe(email);
   });
 
-  it(`Subscribe to mail newsletter located within an iframe`, () => {
-    practicePage.emailSubIframe(email);
+  it(`Assert and click a button within a nested iframe`, () => {
+    cy.visit(`https://www.dezlearn.com/nested-iframes-example/`);
+    practicePage.clickNestedIframeBtn();
   });
 
 });

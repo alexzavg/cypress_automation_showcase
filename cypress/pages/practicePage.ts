@@ -143,4 +143,19 @@ export class PracticePage {
     cy.iframe(iframe).find('#success-message').should('have.text', 'You are now subscribed!');
   }
 
+  clickNestedIframeBtn() {
+    const parentIframe = '#parent_iframe';
+    const childIframe = '#iframe1';
+
+    cy.frameLoaded(parentIframe);
+    cy.iframe(parentIframe).within(() => {
+      cy.frameLoaded(childIframe);
+      cy.iframe(childIframe).find('button').contains('Click Here').click();
+      cy.iframe(childIframe).find('#processing')
+        .invoke('text')
+        .then(text => text.replace(/\s+/g, ' ').trim()) // Replace all sequences of whitespace with a single space
+        .should('equal', 'Hooray..! You clicked the button from iframe 2');
+    });
+  }
+
 }
