@@ -10,6 +10,11 @@ export class PracticePage {
     addElementBtn: () => cy.get('[onclick="addElement()"]'),
     deleteElementBtn: () => cy.get('[onclick="deleteElement()"]'),
     showNotificationBtn: () => cy.get('[href="/notification-message"]'),
+    jsAlertBtn: () => cy.get('#js-alert'),
+    jsConfirmBtn: () => cy.get('#js-confirm'),
+    jsPromptBtn: () => cy.get('#js-prompt'),
+    dialogResponse: () => cy.get('#dialog-response'),
+    checkbox: () => cy.get('#checkbox1'),
   }
 
   fillNumberInput(value: string) {
@@ -170,8 +175,8 @@ export class PracticePage {
     cy.on('window:alert', (text) => {
       expect(text).to.equal('I am a Js Alert');
     });
-    cy.get('#js-alert').click();
-    cy.get('#dialog-response').should('have.text', 'OK');
+    this.elements.jsAlertBtn().click();
+    this.elements.dialogResponse().should('have.text', 'OK');
   }
 
   jsConfirm(confirm: boolean) {
@@ -179,11 +184,11 @@ export class PracticePage {
       expect(text).to.equal('I am a Js Confirm');
       return confirm;
     });
-    cy.get('#js-confirm').click();
+    this.elements.jsConfirmBtn().click();
     if (confirm === true) {
-      cy.get('#dialog-response').should('have.text', 'Ok');
+      this.elements.dialogResponse().should('have.text', 'Ok');
     } else {
-      cy.get('#dialog-response').should('have.text', 'Cancel');
+      this.elements.dialogResponse().should('have.text', 'Cancel');
     }
   }
 
@@ -191,16 +196,19 @@ export class PracticePage {
     cy.window().then((win) => {
       const stub = cy.stub(win, 'prompt');
       stub.returns(submit ? promptText : null);
-      cy.get('#js-prompt').click();
-  
-      // Now check if we submitted or canceled to assert the expected outcome
+      this.elements.jsPromptBtn().click();  
       if (submit) {
-        cy.get('#dialog-response').should('have.text', promptText);
+        this.elements.dialogResponse().should('have.text', promptText);
       } else {
-        // In case of cancel, we assume an empty string is displayed
-        cy.get('#dialog-response').should('have.text', '');
+        this.elements.dialogResponse().should('have.text', '');
       }
     });
+  }
+
+  checkboxCheck() {
+    this.elements.checkbox().should('not.be.checked');
+    this.elements.checkbox().check();
+    this.elements.checkbox().should('be.checked');
   }
 
 }
