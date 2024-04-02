@@ -15,6 +15,8 @@ export class PracticePage {
     jsPromptBtn: () => cy.get('#js-prompt'),
     dialogResponse: () => cy.get('#dialog-response'),
     checkbox: () => cy.get('#checkbox1'),
+    keyInput: () => cy.get('#target'),
+    pressedKeyArea: () => cy.get('#result'),
   }
 
   fillNumberInput(value: string) {
@@ -209,6 +211,12 @@ export class PracticePage {
     this.elements.checkbox().should('not.be.checked');
     this.elements.checkbox().check();
     this.elements.checkbox().should('be.checked');
+  }
+
+  pressKey(keyToPress: string, pressedKey: string) {
+    // all keys & combinations https://docs.cypress.io/api/commands/type#Arguments
+    this.elements.keyInput().type(`{${keyToPress}}`);
+    this.elements.pressedKeyArea().should('contain.text', pressedKey);
   }
 
 }

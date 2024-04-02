@@ -109,5 +109,5 @@
   "include": [
     "cypress.config.ts",
     "cypress/**/*"
-  ]
+, "cypress/tests/E2E/press_key.spec.cy.ts"  ]
 }
