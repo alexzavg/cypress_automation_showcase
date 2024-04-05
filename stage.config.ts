@@ -5,7 +5,7 @@ module.exports = defineConfig({
   defaultCommandTimeout: 60000,
   pageLoadTimeout: 60000,
   reporter: 'spec',
-  reporterOptions: null,
+  reporterOptions: undefined,
   requestTimeout: 60000,
   responseTimeout: 60000,
   retries: {
@@ -41,7 +41,10 @@ module.exports = defineConfig({
     env: {
       envName: 'STAGE',
       graphQL_baseUrl: 'https://graphql-teas-endpoint.netlify.app/',
-      training_baseUrl: 'https://practice.expandtesting.com'
+      training_baseUrl: 'https://practice.expandtesting.com',
+      restApi_baseUrl: 'https://practice.expandtesting.com/notes/api',
+      restApi_email: 'me41zavgorodnii@gmail.com',
+      restApi_password: 'q1w2e3r4t5',
     },
   },
 });
