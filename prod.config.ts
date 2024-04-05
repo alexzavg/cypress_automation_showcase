@@ -43,10 +43,8 @@ module.exports = defineConfig({
       graphQL_baseUrl: 'https://graphql-teas-endpoint.netlify.app/',
       training_baseUrl: 'https://practice.expandtesting.com',
       restApi_baseUrl: 'https://practice.expandtesting.com/notes/api',
-      restApiCredentials: {
-        email: 'me41zavgorodnii@gmail.com',
-        password: 'q1w2e3r4t5'
-      }
+      restApi_email: 'me41zavgorodnii@gmail.com',
+      restApi_password: 'q1w2e3r4t5',
     },
   },
 });
